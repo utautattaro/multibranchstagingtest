@@ -6,11 +6,6 @@ name: DeploytoStaging
 # events but only for the master branch
 on:
   workflow_dispatch:
-    inputs:
-      deploybranchname:
-        description: 'Input deploy branch name'
-        required: true
-        default: staging/master
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -51,6 +46,6 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@3.6.2
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          BRANCH: ${{ github.event.inputs.deploybranchname }} # The branch the action should deploy to.
+          BRANCH: ${{'deploy/'}}${{GITHUB_REF##*/}} # The branch the action should deploy to.
           FOLDER: dist # The folder the action should deploy.
           CLEAN: true # Automatically remove deleted files from the deploy branch
