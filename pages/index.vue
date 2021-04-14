@@ -5,8 +5,8 @@
       <h1 class="title">
         multibranchstagingtest
       </h1>
-      <p>this is develop branch</p>
-      
+      <p>this is functiona branch</p>
+
       <div class="links">
         <a
           href="https://nuxtjs.org/"
