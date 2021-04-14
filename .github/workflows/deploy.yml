@@ -16,6 +16,8 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
+      - name: Set env
+        run: echo "DEPLOY_BRANCH=deploy/${GITHUB_REF##*/}" >> $GITHUB_ENV
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Checkout 🛎️
         uses: actions/checkout@v2
@@ -46,6 +48,6 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@3.6.2
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          BRANCH: ${{'deploy/'}}${{GITHUB_REF}} # The branch the action should deploy to.
+          BRANCH: ${{ env.DEPLOY_BRANCH }} # The branch the action should deploy to.
           FOLDER: dist # The folder the action should deploy.
           CLEAN: true # Automatically remove deleted files from the deploy branch
