@@ -1,6 +1,10 @@
-export default {
+const environment = process.env.NODE_ENV || 'production';
+const envSet = require(`./env.${environment}.js`)
+module.exports = {
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
+
+  env: envSet,
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -41,8 +45,5 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
-  },
-  router: {
-    base: '/multibranchstagingtest/'
   }
 }
