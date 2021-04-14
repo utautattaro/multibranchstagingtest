@@ -6,7 +6,7 @@
         multibranchstagingtest
       </h1>
       <p>this is functiona branch</p>
-
+      <b-link to="/hoge">tohoge</b-link>
       <div class="links">
         <a
           href="https://nuxtjs.org/"
