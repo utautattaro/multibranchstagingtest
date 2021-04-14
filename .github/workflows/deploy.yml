@@ -10,7 +10,7 @@ on:
       deploybranchname:
         description: 'Input deploy branch name'
         required: true
-        default: echo 'staging/${GITHUB_REF##*/}'
+        default: staging/${{GITHUB_REF##*/}}
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
