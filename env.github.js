@@ -1,5 +1,3 @@
 module.exports = {
-    router: {
-        base: '/multibranchstagingtest/'
-      }
+    base: '/multibranchstagingtest/'
 }
