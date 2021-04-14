@@ -6,11 +6,6 @@ name: DeploytoStaging
 # events but only for the master branch
 on:
   workflow_dispatch:
-    inputs:
-      name:
-        description: 'Input your name'
-        required: true
-        default: 'Ryotaro Tsuda'
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -21,7 +16,8 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      - run: echo "Hello ${{ github.event.inputs.name }}!"
+      - name: Set env
+        run: echo "DEPLOY_BRANCH=po/${GITHUB_REF##*/}" >> $GITHUB_ENV
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Checkout 🛎️
         uses: actions/checkout@v2
@@ -52,6 +48,6 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@3.6.2
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          BRANCH: gh-pages # The branch the action should deploy to.
+          BRANCH: ${{ env.DEPLOY_BRANCH }} # The branch the action should deploy to.
           FOLDER: dist # The folder the action should deploy.
           CLEAN: true # Automatically remove deleted files from the deploy branch
