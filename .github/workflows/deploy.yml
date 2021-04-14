@@ -6,7 +6,7 @@ name: DeploytoStaging
 # events but only for the master branch
 on:
   workflow_dispatch:
-  inputs:
+    inputs:
       deploybranchname:
         description: 'Input deploy branch name'
         required: true
