@@ -35,6 +35,13 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
 
+      - name: build SyVL
+        run : |
+          cd static
+          cd SyVL
+          npm install .
+          npm run build
+
       - name: install
         run: npm install .
 
